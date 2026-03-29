@@ -1,75 +1,70 @@
-# Wyznaczanie TDOA przy użyciu skumulowanej korelacji wzajemnej z interpolacją paraboliczną
+# TDOA Estimation using Cumulative Cross-Correlation with Parabolic Interpolation
 
-### Autor: [Marcel Kwiatkowski]
-**Kierunek:** [Automatyka i Robotyka] | **Uczelnia:** Akademia Marynarki Wojennej w Gdyni
-**Projekt Przejściowy - Laboratorium Hydroakustyki**
-
----
-
-## 📑 Spis treści
-1. [O Projekcie](#-o-projekcie)
-2. [Struktura Repozytorium](#-struktura-repozytorium)
-3. [Podstawy Teoretyczne](#-podstawy-teoretyczne)
-4. [Konfiguracja Środowiska](#-konfiguracja-środowiska)
-5. [Analiza Wyników](#-analiza-wyników)
-6. [Bibliografia](#-bibliografia)
+### Author: [Marcel Kwiatkowski]
+**Project:** Transition Project | **University:** Naval Academy in Gdynia (AMW)
 
 ---
 
-## 🌊 O Projekcie
-Projekt dotyczy implementacji pasywnego systemu lokalizacji jednostek podwodnych przez mobilny **rój Bezzałogowych Systemów Powietrznych/Nawodnych (R-BSP)**. 
-
-Głównym wyzwaniem była estymacja różnicy czasu nadejścia sygnału (**TDOA**) z precyzją wyższą niż wynika to z częstotliwości próbkowania ($f_s = 300\text{ kHz}$). Zastosowanie **skumulowanej korelacji wzajemnej** w połączeniu z **interpolacją paraboliczną (ICC)** pozwoliło na uzyskanie rozdzielczości sub-samplowej na poziomie nanosekundowym.
-
----
-
-## 📂 Struktura Repozytorium
-Kliknij w poniższe linki, aby przejść do odpowiednich sekcji projektu:
-
-* 📁 [**scripts/**](scripts/) - Zawiera kody źródłowe w języku Python:
-    * `SimZopBsp.py` - Generator sygnałów i symulator propagacji.
-    * `analiza_tdoa.py` - Główny silnik obliczeniowy korelacji i ICC.
-* 📁 [**data/**](data/) - Surowe dane hydroakustyczne w formacie `.wav` dla różnych scenariuszy.
-* 📁 [**results/**](results/) - Wygenerowane raporty graficzne:
-    * Spektrogramy sygnałów.
-    * Wykresy korelacji z naniesioną deltą sub-samplową.
-    * Wizualizacja geometrii roju 3D.
-* 📄 [**requirements.txt**](requirements.txt) - Lista bibliotek niezbędnych do uruchomienia projektu.
+## 📑 Table of Contents
+1. [About The Project](#-about-the-project)
+2. [Repository Structure](#-repository-structure)
+3. [Theoretical Background](#-theoretical-background)
+4. [Environment Setup](#-environment-setup)
+5. [Results Analysis](#-results-analysis)
 
 ---
 
-## 🧠 Podstawy Teoretyczne
+## 🌊 About The Project
+This project implements a passive hydroacoustic localization system for an **Unmanned Surface/Aerial Vehicle (USV/UAV) swarm**.
 
-### Skumulowana Korelacja Wzajemna
-Dla sygnałów dyskretnych $x_1$ i $x_2$ wyznaczamy funkcję korelacji:
+The main objective was to estimate the **Time Difference of Arrival (TDOA)** with sub-sample precision (higher than the sampling period $1/f_s$). By combining **Cumulative Cross-Correlation** with **Parabolic Interpolation (ICC)**, nanosecond-level resolution was achieved at a 300 kHz sampling rate.
+
+---
+
+## 📂 Repository Structure
+* 📁 [**scripts/**](scripts/) - Python source code:
+    * `SimZopBsp.py` - Signal generator and propagation simulator.
+    * `analiza_tdoa.py` - Core calculation engine (Correlation + ICC).
+* 📁 [**data/**](data/) - Raw hydroacoustic data in `.wav` format.
+* 📁 [**results/**](results/) - Generated visual reports:
+    * Signal spectrograms.
+    * Correlation plots with sub-sample delta marking.
+    * 3D swarm geometry visualization.
+* 📄 [**requirements.txt**](requirements.txt) - List of necessary Python libraries.
+
+---
+
+## 🧠 Theoretical Background
+
+### Cumulative Cross-Correlation
+For discrete signals $x_1$ and $x_2$, the correlation function is calculated as:
 $$R_{x_1x_2}[m] = \sum_{n=0}^{N-1} x_1[n] \cdot x_2[n+m]$$
 
-### Interpolacja Paraboliczna (ICC)
-Aby uzyskać precyzję sub-samplową, wyznaczamy poprawkę $\delta$ na podstawie trzech próbek wokół maksimum ($y_1, y_2, y_3$):
+### Parabolic Interpolation (ICC)
+To break the discrete sampling barrier, a sub-sample correction $\delta$ is calculated using three samples around the peak ($y_1, y_2, y_3$):
 $$\delta = \frac{0.5(y_1 - y_3)}{y_1 - 2y_2 + y_3}$$
-Ostateczny wynik TDOA: $TDOA = (m_{peak} + \delta) / f_s$.
+Final TDOA: $TDOA = (m_{peak} + \delta) / f_s$.
 
 ---
 
-## 📊 Analiza Wyników
+## 📊 Results Analysis
 
-### Scenariusz I: Kalibracja Symetryczna
-Dla celu umieszczonego w osi symetrii pary $H_1-H_2$ uzyskano błąd estymacji rzędu **214 nanosekund**, co stanowi 0.06 okresu próbkowania.
+### Scenario I: Symmetrical Calibration
+For a target placed on the symmetry axis of the $H_1-H_2$ pair, the estimation error was approximately **214 nanoseconds**.
 
-| Para Hydrofonów | TDOA Zmierzone (ICC) [s] | Stan |
+| Hydrophone Pair | Measured TDOA (ICC) [s] | Status |
 | :--- | :--- | :--- |
-| **H1 - H2** | `-0.0000002147` | ✅ Sukces (Idealne zero) |
-| **H3 - H4** | `0.1605173079` | ✅ Zgodne z geometrią |
+| **H1 - H2** | `-0.0000002147` | ✅ Success (Near Zero) |
+| **H3 - H4** | `0.1293562645` | ✅ Validated |
 
-### Wizualizacja korelacji (Przykład)
-![Korelacja H1-H2](results/korelacja_h1_h2_niesymetryczny.png)
-*Rys. 1: Wyznaczenie szczytu korelacji z uwzględnieniem interpolacji parabolicznej.*
+### Correlation Visualization
+![Correlation H1-H2](results/korelacja_h1_h2_niesymetryczny.png)
+*Fig 1: Cross-correlation peak detection with parabolic interpolation.*
 
 ---
 
-## 🛠 Konfiguracja Środowiska
+## 🛠 Environment Setup
 
-1. Sklonuj repozytorium:
+1. Clone the repository:
    ```bash
-   git clone [https://github.com/](https://github.com/)[marcelkwiatkowski01]/[Wyznaczanie-TDOA-przy-u-yciu-skumulowanej-korelacji-wzajemnej-z-interpolacj-paraboliczn-
-].git
+   git clone [https://github.com/](https://github.com/)[marcelkwiatkowski01]/[TDOA].git
