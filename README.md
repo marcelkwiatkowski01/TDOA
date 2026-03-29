@@ -71,4 +71,5 @@ Dla celu umieszczonego w osi symetrii pary $H_1-H_2$ uzyskano błąd estymacji r
 
 1. Sklonuj repozytorium:
    ```bash
-   git clone [https://github.com/](https://github.com/)[TWOJ-LOGIN]/[NAZWA-REPO].git
+   git clone [https://github.com/](https://github.com/)[marcelkwiatkowski01]/[Wyznaczanie-TDOA-przy-u-yciu-skumulowanej-korelacji-wzajemnej-z-interpolacj-paraboliczn-
+].git
