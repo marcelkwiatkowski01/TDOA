@@ -57,6 +57,18 @@ For a target placed on the symmetry axis of the $H_1-H_2$ pair, the estimation e
 | **H1 - H2** | `-0.0000002147` | ✅ Success (Near Zero) |
 | **H3 - H4** | `0.1293562645` | ✅ Validated |
 
+## 🖼️ Key Visualizations
+
+### Signal Characteristics
+To ensure high correlation precision, a multi-tone signal (comb spectrum) was used. The spectrogram below confirms the stability of the received signal across all channels.
+
+![Spectrogram](results/spektrogramy_h1_h4.png)
+
+### Swarm Geometry
+The simulation uses an asymmetric 4-element hydrophone array. This configuration is crucial for avoiding geometric singularities during the 3D positioning phase.
+
+![Geometry 3D](results/geometria_ukladu.png)
+
 ### Correlation Visualization
 ![Correlation H1-H2](results/korelacja_h1_h2_niesymetryczny.png)
 *Fig 1: Cross-correlation peak detection with parabolic interpolation.*
