@@ -1,15 +1,15 @@
 # TDOA Estimation using Cumulative Cross-Correlation with Parabolic Interpolation
 
-### Author: [Marcel Kwiatkowski]
+### Author: Marcel Kwiatkowski
 **Project:** Transition Project | **University:** Naval Academy in Gdynia (AMW)
 
 ---
 
-## 🎯 Project Rationale & Motivation
+## 🎯 Project Mission: Why it matters?
 
-In modern maritime theaters, **Anti-Submarine Warfare (ASW)** is shifting towards the use of autonomous, low-cost, and distributed systems. Traditional fixed acoustic barriers are being replaced by **UAV/USV swarms** that offer superior operational flexibility and stealth.
+In modern maritime theaters, **Anti-Submarine Warfare (ASW)** is shifting towards the use of autonomous, low-cost, and distributed systems. This project addresses the critical challenge of achieving high-precision target localization using **UAV/USV swarms**.
 
-The core challenge of such systems is achieving high-precision localization while maintaining energy efficiency. This project addresses this by implementing a **passive acoustic localization engine** that breaks the traditional sampling rate barrier. By utilizing **Parabolic Interpolation**, we achieve nanosecond-level TDOA precision without the need for high-frequency hardware, directly translating to:
+By implementing **Parabolic Sub-sample Interpolation (ICC)**, we "break" the discrete sampling barrier, achieving nanosecond-level TDOA precision without expensive, power-hungry hardware. This directly translates to:
 * **Enhanced Stealth:** Entirely passive detection (no active sonar emission).
 * **Operational Longevity:** Reduced computational and power requirements for swarm units.
 * **Tactical Precision:** Centimeter-level target tracking in complex hydroacoustic environments.
@@ -20,27 +20,21 @@ The core challenge of such systems is achieving high-precision localization whil
 1. [About The Project](#-about-the-project)
 2. [Repository Structure](#-repository-structure)
 3. [Theoretical Background](#-theoretical-background)
-4. [Environment Setup](#-environment-setup)
+4. [Key Visualizations](#-key-visualizations)
 5. [Results Analysis](#-results-analysis)
+6. [Environment Setup](#-environment-setup)
 
 ---
 
 ## 🌊 About The Project
-This project implements a passive hydroacoustic localization system for an **Unmanned Surface/Aerial Vehicle (USV/UAV) swarm**.
-
-The main objective was to estimate the **Time Difference of Arrival (TDOA)** with sub-sample precision (higher than the sampling period $1/f_s$). By combining **Cumulative Cross-Correlation** with **Parabolic Interpolation (ICC)**, nanosecond-level resolution was achieved at a 300 kHz sampling rate.
+The main objective was to estimate the **Time Difference of Arrival (TDOA)** with sub-sample precision higher than the sampling period $1/f_s$. The system processes multi-tone signals at a 300 kHz sampling rate to provide reliable positioning data for the swarm.
 
 ---
 
 ## 📂 Repository Structure
-* 📁 [**scripts/**](scripts/) - Python source code:
-    * `SimZopBsp.py` - Signal generator and propagation simulator.
-    * `analiza_tdoa.py` - Core calculation engine (Correlation + ICC).
+* 📁 [**scripts/**](scripts/) - Python source code (`SimZopBsp.py` and `analiza_tdoa.py`).
 * 📁 [**data/**](data/) - Raw hydroacoustic data in `.wav` format.
-* 📁 [**results/**](results/) - Generated visual reports:
-    * Signal spectrograms.
-    * Correlation plots with sub-sample delta marking.
-    * 3D swarm geometry visualization.
+* 📁 [**results/**](results/) - Generated visual reports and plots.
 * 📄 [**requirements.txt**](requirements.txt) - List of necessary Python libraries.
 
 ---
@@ -48,20 +42,33 @@ The main objective was to estimate the **Time Difference of Arrival (TDOA)** wit
 ## 🧠 Theoretical Background
 
 ### Cumulative Cross-Correlation
-For discrete signals $x_1$ and $x_2$, the correlation function is calculated as:
+For discrete signals $x_1$ and $x_2$, the correlation function is:
 $$R_{x_1x_2}[m] = \sum_{n=0}^{N-1} x_1[n] \cdot x_2[n+m]$$
 
 ### Parabolic Interpolation (ICC)
-To break the discrete sampling barrier, a sub-sample correction $\delta$ is calculated using three samples around the peak ($y_1, y_2, y_3$):
+A sub-sample correction $\delta$ is calculated using three samples around the peak ($y_1, y_2, y_3$):
 $$\delta = \frac{0.5(y_1 - y_3)}{y_1 - 2y_2 + y_3}$$
 Final TDOA: $TDOA = (m_{peak} + \delta) / f_s$.
 
 ---
 
-## 📊 Results Analysis
+## 🖼️ Key Visualizations
 
-### Scenario I: Symmetrical Calibration
-For a target placed on the symmetry axis of the $H_1-H_2$ pair, the estimation error was approximately **214 nanoseconds**.
+### Signal Characteristics
+Multi-tone signal (comb spectrum) used to ensure high correlation precision across channels.
+![Spectrogram](results/spektrogramy_h1_h4.png)
+
+### Swarm Geometry
+Asymmetric 4-element hydrophone array configuration.
+![Geometry 3D](results/geometria_ukladu.png)
+
+### Correlation Analysis
+![Correlation H1-H2](results/korelacja_h1_h2_niesymetryczny.png)
+*Fig 1: Cross-correlation peak detection with parabolic interpolation.*
+
+---
+
+## 📊 Results Analysis (Sample)
 
 | Hydrophone Pair | Measured TDOA (ICC) [s] | Status |
 | :--- | :--- | :--- |
@@ -70,26 +77,8 @@ For a target placed on the symmetry axis of the $H_1-H_2$ pair, the estimation e
 
 ---
 
-## 🖼️ Key Visualizations
-
-### Signal Characteristics
-To ensure high correlation precision, a multi-tone signal (comb spectrum) was used. The spectrogram below confirms the stability of the received signal across all channels.
-
-![Spectrogram](results/spektrogramy_h1_h4.png)
-
-### Swarm Geometry
-The simulation uses an asymmetric 4-element hydrophone array. This configuration is crucial for avoiding geometric singularities during the 3D positioning phase.
-
-![Geometry 3D](results/geometria_ukladu.png)
-
-### Correlation Visualization
-![Correlation H1-H2](results/korelacja_h1_h2_niesymetryczny.png)
-*Fig 1: Cross-correlation peak detection with parabolic interpolation.*
-
----
-
 ## 🛠 Environment Setup
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/](https://github.com/)[marcelkwiatkowski01]/[TDOA].git
+   git clone [https://github.com/marcelkwiatkowski01/TDOA.git](https://github.com/marcelkwiatkowski01/TDOA.git)
