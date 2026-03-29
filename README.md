@@ -56,7 +56,7 @@ Final TDOA: $TDOA = (m_{peak} + \delta) / f_s$.
 
 ### Signal Characteristics
 Multi-tone signal (comb spectrum) used to ensure high correlation precision across channels.
-![Spectrogram](results/spektrogramy_h1_h4.png)
+![Spectrogram](results/spektogramy_h1_h4.png)
 
 ### Swarm Geometry
 Asymmetric 4-element hydrophone array configuration.
