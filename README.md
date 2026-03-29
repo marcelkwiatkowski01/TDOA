@@ -5,6 +5,17 @@
 
 ---
 
+## 🎯 Project Rationale & Motivation
+
+In modern maritime theaters, **Anti-Submarine Warfare (ASW)** is shifting towards the use of autonomous, low-cost, and distributed systems. Traditional fixed acoustic barriers are being replaced by **UAV/USV swarms** that offer superior operational flexibility and stealth.
+
+The core challenge of such systems is achieving high-precision localization while maintaining energy efficiency. This project addresses this by implementing a **passive acoustic localization engine** that breaks the traditional sampling rate barrier. By utilizing **Parabolic Interpolation**, we achieve nanosecond-level TDOA precision without the need for high-frequency hardware, directly translating to:
+* **Enhanced Stealth:** Entirely passive detection (no active sonar emission).
+* **Operational Longevity:** Reduced computational and power requirements for swarm units.
+* **Tactical Precision:** Centimeter-level target tracking in complex hydroacoustic environments.
+
+---
+
 ## 📑 Table of Contents
 1. [About The Project](#-about-the-project)
 2. [Repository Structure](#-repository-structure)
@@ -56,6 +67,8 @@ For a target placed on the symmetry axis of the $H_1-H_2$ pair, the estimation e
 | :--- | :--- | :--- |
 | **H1 - H2** | `-0.0000002147` | ✅ Success (Near Zero) |
 | **H3 - H4** | `0.1293562645` | ✅ Validated |
+
+---
 
 ## 🖼️ Key Visualizations
 
