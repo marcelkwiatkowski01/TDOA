@@ -132,4 +132,4 @@ Final TDOA: $TDOA = (m_{peak} + \delta) / f_s$.
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/marcelkwiatkowski01/TDOA.git](https://github.com/marcelkwiatkowski01/TDOA.git)
+   git clone [https://github.com/marcelkwiatkowski01/TDOA.git](https://github.com/marcelkwiatkowski01/TDOA-Estimation-Cumulative-Cross-Correlation-Parabolic-Interpolation.git)
