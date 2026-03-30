@@ -84,7 +84,7 @@ Final TDOA: $TDOA = (m_{peak} + \delta) / f_s$.
 ![Geometry 3D](results/geometria_ukladu.png)
 
 ### Correlation Analysis
-![Correlation H1-H2](results/korelacja_h1_h2_niesymetryczny.png)
+![Correlation H1-H2](results/korelacja_h1_h2_asymetryczna.png)
 
 ---
 
@@ -92,7 +92,7 @@ Final TDOA: $TDOA = (m_{peak} + \delta) / f_s$.
 
 | Hydrophone Pair | Measured TDOA (ICC) [s] | Error vs Theoretical | Status |
 | :--- | :--- | :--- | :--- |
-| **H1 - H2** | `-0.0000002147` | $< 1\text{ sample}$ | ✅ Verified |
+| **H1 - H2** | `-0.0020764273` | $< 1\text{ sample}$ | ✅ Verified |
 | **H3 - H4** | `0.1293562645` | Minimal | ✅ Verified |
 
 ---
