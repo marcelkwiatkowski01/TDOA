@@ -1,4 +1,4 @@
-# TDOA Estimation using Cumulative Cross-Correlation with Parabolic Interpolation
+# ⚓ TDOA Estimation: Cumulative Cross-Correlation with Sub-sample ICC
 
 ### Author: Marcel Kwiatkowski
 **Project:** Transition Project | **University:** Naval Academy in Gdynia (AMW)
@@ -38,12 +38,16 @@ By implementing **Parabolic Sub-sample Interpolation (ICC)**, we "break" the dis
 ---
 
 ## 📑 Table of Contents
-1. [About The Project](#-about-the-project)
-2. [Repository Structure](#-repository-structure)
-3. [Theoretical Background](#-theoretical-background)
-4. [Key Visualizations](#-key-visualizations)
-5. [Results Analysis](#-results-analysis)
-6. [Environment Setup](#-environment-setup)
+1. [Project Mission](#-project-mission-why-it-matters)
+2. [Key Features](#-key-features)
+3. [Technical Specifications](#-technical-specifications)
+4. [About The Project](#-about-the-project)
+5. [Repository Structure](#-repository-structure)
+6. [Theoretical Background](#-theoretical-background)
+7. [Key Visualizations](#-key-visualizations)
+8. [Results Analysis](#-results-analysis-sample)
+9. [Future Work](#-future-work)
+10. [Environment Setup](#-environment-setup)
 
 ---
 
@@ -78,7 +82,7 @@ Final TDOA: $TDOA = (m_{peak} + \delta) / f_s$.
 ## 🖼️ Key Visualizations
 
 ### Signal Characteristics
-![Spectrogram](results/spektogramy_h1_h4.png)
+![Spectrogram](results/spektrogramy_h1_h4.png)
 
 ### Swarm Geometry
 ![Geometry 3D](results/geometria_ukladu.png)
