@@ -82,24 +82,32 @@ Final TDOA: $TDOA = (m_{peak} + \delta) / f_s$.
 ## 🖼️ Key Visualizations
 
 ### 📐 Geometry Comparison: Calibration vs. Operational
-Visualization of the swarm layout. Scenario S1 shows the target on the symmetry axis (ideal for calibration), while S2 shows an asymmetrical operational position.
+*Visual representation of the sensor array and target positions in 3D space.*
 
 | Scenario S1 (Symmetrical Baseline) | Scenario S2 (Asymmetrical Operational) |
 | :--- | :--- |
-| ![Geom_S1](results/geometria_ukladu_symetryczny_h1_h2.png) | ![Geom_S2](results/geometria_ukladu.png) |
-| *Target aligned with $H_1-H_2$ axis.* | *Target offset in 3D space.* |
+| ![Geom_S1](results/geometria_ukladu_S1.png) | ![Geom_S2](results/geometria_ukladu_S2.png) |
+| **Description:** 3D visualization of the symmetrical sensor baseline. The target (S1) is equidistant from H1 and H2, serving as a zero-delay reference for system calibration. | **Description:** The operational scenario with an off-axis target. This layout introduces complex time delays, testing the algorithm's ability to handle asymmetric signal arrivals. |
+
+---
 
 ### 🔍 Correlation Analysis: Peak Shift ($H_1-H_2$)
-Proof of the ICC algorithm detecting the sub-sample shift when moving from S1 to S2.
+*Comparison of cross-correlation results showing discrete vs. interpolated peak detection.*
 
 | Symmetrical (S1) - Expected ~0s | Asymmetrical (S2) - Detected Shift |
 | :--- | :--- |
 | ![S1_H1H2](results/korelacja_h1_h2_symetryczna.png) | ![S2_H1H2](results/korelacja_h1_h2_asymetryczna.png) |
+| **Description:** Calibration check. The peak is precisely at zero lag, verifying that the signals arrive at H1 and H2 simultaneously in the symmetrical setup. | **Description:** Detection of a sub-sample shift. The parabolic interpolation identifies the true peak between discrete samples, crucial for nanosecond-level TDOA. |
+
+---
 
 ### 🌊 Acoustic Signature & Extra Pairs
+*Analysis of signal quality and robustness across different sensor combinations.*
+
 | Signal Spectrogram | Asymmetrical $H_3-H_4$ Validation |
 | :--- | :--- |
-| ![Spectrogram](results/spektogramy_h1_h4.png) | ![S2_H3H4](results/korelacja_h3_h4_asymetryczna.png) |
+| ![Spectrogram](results/spektrogramy_h1_h4.png) | ![S2_H3H4](results/korelacja_h3_h4_asymetryczna.png) |
+| **Description:** Time-frequency analysis of the received signals. The 11 distinct harmonics (comb spectrum) provide high correlation gain and resistance to environmental noise. | **Description:** Validation of the TDOA engine on a secondary baseline ($H_3-H_4$). Successful peak detection confirms the system's reliability for complex 3D positioning. |
 
 ---
 
