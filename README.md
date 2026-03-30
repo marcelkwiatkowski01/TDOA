@@ -81,22 +81,25 @@ Final TDOA: $TDOA = (m_{peak} + \delta) / f_s$.
 
 ## 🖼️ Key Visualizations
 
-### 📐 The Core Comparison: Symmetrical vs. Asymmetrical ($H_1-H_2$)
-The primary proof of the ICC algorithm is its ability to detect the shift between a perfectly centered target (S1) and an offset target (S2) on the same hydrophone pair.
+### 📐 Geometry Comparison: Calibration vs. Operational
+Visualization of the swarm layout. Scenario S1 shows the target on the symmetry axis (ideal for calibration), while S2 shows an asymmetrical operational position.
 
-| Scenario S1 (Symmetrical - Calibration) | Scenario S2 (Asymmetrical - Operational) |
+| Scenario S1 (Symmetrical Baseline) | Scenario S2 (Asymmetrical Operational) |
+| :--- | :--- |
+| ![Geom_S1](results/geometria_ukladu_symetryczny_h1_h2.png) | ![Geom_S2](results/geometria_ukladu.png) |
+| *Target aligned with $H_1-H_2$ axis.* | *Target offset in 3D space.* |
+
+### 🔍 Correlation Analysis: Peak Shift ($H_1-H_2$)
+Proof of the ICC algorithm detecting the sub-sample shift when moving from S1 to S2.
+
+| Symmetrical (S1) - Expected ~0s | Asymmetrical (S2) - Detected Shift |
 | :--- | :--- |
 | ![S1_H1H2](results/korelacja_h1_h2_symetryczna.png) | ![S2_H1H2](results/korelacja_h1_h2_asymetryczna.png) |
-| *Expected TDOA: ~0s* | *Expected TDOA: ~-0.002s (Shift detected by ICC)* |
 
-### 🔍 Additional Validation ($H_3-H_4$)
-Further proof of robustness using a secondary pair in the operational scenario.
-![S2_H3H4](results/korelacja_h3_h4_asymetryczna.png)
-
-### 🌊 Environment Overview
-| Signal Spectrogram | 3D Simulation Space |
+### 🌊 Acoustic Signature & Extra Pairs
+| Signal Spectrogram | Asymmetrical $H_3-H_4$ Validation |
 | :--- | :--- |
-| ![Spectrogram](results/spektogramy_h1_h4.png) | ![Geometry 3D](results/geometria_ukladu.png) |
+| ![Spectrogram](results/spektogramy_h1_h4.png) | ![S2_H3H4](results/korelacja_h3_h4_asymetryczna.png) |
 
 ---
 
