@@ -29,7 +29,7 @@ By implementing **Parabolic Sub-sample Interpolation (ICC)**, we "break" the dis
 ## ⚙️ Technical Specifications
 | Parameter | Value | Description |
 | :--- | :--- | :--- |
-| **Sampling Frequency ($f_s$)** | $300\text{ kHz}$ | High-fidelity audio capture |
+| **Sampling Frequency ($f_s$) | $300\text{ kHz}$ | High-fidelity audio capture |
 | **Speed of Sound ($v$)** | $1500\text{ m/s}$ | Underwater acoustic constant |
 | **Signal Type** | Multi-tone (11 harmonics) | Designed for high-correlation gain |
 | **Target Depth** | Variable (up to $15\text{ m}$) | Simulates sub-surface threats |
@@ -81,14 +81,18 @@ Final TDOA: $TDOA = (m_{peak} + \delta) / f_s$.
 
 ## 🖼️ Key Visualizations
 
-### Signal Characteristics
-![Spectrogram](results/spektrogramy_h1_h4.png)
+### Signal & Geometry Overview
+| Acoustic Spectrogram | 3D Swarm Geometry |
+| :--- | :--- |
+| ![Spectrogram](results/spektrogramy_h1_h4.png) | ![Geometry 3D](results/geometria_ukladu.png) |
 
-### Swarm Geometry
-![Geometry 3D](results/geometria_ukladu.png)
+### Correlation Analysis (H1-H2 vs H3-H4)
+Comparison of peak detection between baseline and validation hydrophone pairs across two test scenarios.
 
-### Correlation Analysis
-![Correlation H1-H2](results/korelacja_h1_h2_asymetryczna.png)
+| Scenario | Pair $H_1 - H_2$ | Pair $H_3 - H_4$ |
+| :--- | :--- | :--- |
+| **S1 (Symmetrical)** | ![S1_H1H2](results/korelacja_h1_h2_symetryczna.png) | ![S1_H3H4](results/korelacja_h3_h4_symetryczna.png) |
+| **S2 (Asymmetrical)** | ![S2_H1H2](results/korelacja_h1_h2_asymetryczna.png) | ![S2_H3H4](results/korelacja_h3_h4_asymetryczna.png) |
 
 ---
 
