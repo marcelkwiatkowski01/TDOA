@@ -1,7 +1,7 @@
 # ⚓ TDOA Estimation: Cumulative Cross-Correlation with Sub-sample ICC
 
 ### Author: Marcel Kwiatkowski
-**Project:** Transition Project | **University:** Naval Academy in Gdynia (AMW)
+**Project:** TDOA Project | **University:** Naval Academy in Gdynia (AMW)
 **Field:** Hydroacoustics & Autonomous Systems
 
 ---
@@ -86,7 +86,7 @@ Final TDOA: $TDOA = (m_{peak} + \delta) / f_s$.
 
 | Scenario S1 (Symmetrical Baseline) | Scenario S2 (Asymmetrical Operational) |
 | :--- | :--- |
-| ![Geom_S1](results/geometria_ukladu_S1.png) | ![Geom_S2](results/geometria_ukladu_S2.png) |
+| ![Geom_S1](results/geometria_ukladu_symetryczny_h1_h2.png) | ![Geom_S2](results/geometria_ukladu.png) |
 | **Description:** 3D visualization of the symmetrical sensor baseline. The target (S1) is equidistant from H1 and H2, serving as a zero-delay reference for system calibration. | **Description:** The operational scenario with an off-axis target. This layout introduces complex time delays, testing the algorithm's ability to handle asymmetric signal arrivals. |
 
 ---
@@ -106,7 +106,7 @@ Final TDOA: $TDOA = (m_{peak} + \delta) / f_s$.
 
 | Signal Spectrogram | Asymmetrical $H_3-H_4$ Validation |
 | :--- | :--- |
-| ![Spectrogram](results/spektrogramy_h1_h4.png) | ![S2_H3H4](results/korelacja_h3_h4_asymetryczna.png) |
+| ![Spectrogram](results/spektogramy_h1_h4.png) | ![S2_H3H4](results/korelacja_h3_h4_asymetryczna.png) |
 | **Description:** Time-frequency analysis of the received signals. The 11 distinct harmonics (comb spectrum) provide high correlation gain and resistance to environmental noise. | **Description:** Validation of the TDOA engine on a secondary baseline ($H_3-H_4$). Successful peak detection confirms the system's reliability for complex 3D positioning. |
 
 ---
